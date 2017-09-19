@@ -13,6 +13,7 @@
         <failOnMissingWebXml>false</failOnMissingWebXml>
         <vaadin.version>8.0.0.alpha2</vaadin.version>
         <vaadin.plugin.version>${vaadin.version}</vaadin.plugin.version>
+        <jacoco.version>0.7.5.201505241946</jacoco.version>
     </properties>
 
     <repositories>
