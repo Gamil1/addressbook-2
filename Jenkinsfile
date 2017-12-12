@@ -7,7 +7,7 @@
 /* Only keep the 10 most recent builds. */
 def projectProperties = [
         buildDiscarder(logRotator(artifactDaysToKeepStr: '5', artifactNumToKeepStr: '5', daysToKeepStr: '5', numToKeepStr: '5')),
-        [$class: 'GithubProjectProperty', projectUrlStr: 'https://github.com/veersudhir83/addressbook-vaadin.git/']
+        [$class: 'GithubProjectProperty', projectUrlStr: 'https://github.com/veersudhir83/addressbook.git/']
         //,pipelineTriggers([pollSCM('H/10 * * * *')])
 ]
 
@@ -34,7 +34,7 @@ try {
 
         if (isArchivalEnabled) {
             // Artifactory server id configured in the jenkins along with credentials
-            artifactoryServer = Artifactory.server 'ArtifactoryOSS-5.4.3'
+            artifactoryServer = Artifactory.server 'Artifactory'
         }
 
         // to download appConfig.json files from artifactory
@@ -87,14 +87,14 @@ try {
         stage('Tool Setup'){
             // ** NOTE: These tools must be configured in the jenkins global configuration.
             if (isUnix()) {
-                mvnHome = tool name: 'mvn3', type: 'maven'
-                antHome = tool name: 'ant1.9.6', type: 'ant'
+                mvnHome = tool name: 'mvn', type: 'maven'
+                antHome = tool name: 'ant', type: 'ant'
             } else {
-                mvnHome = tool name: 'mvn3.5', type: 'maven'
-                antHome = tool name: 'ant1.9.6', type: 'ant'
+                mvnHome = tool name: 'mvn', type: 'maven'
+                antHome = tool name: 'ant', type: 'ant'
             }
             if (isAnalysisEnabled) {
-                sonarHome = tool name: 'sonar-scanner-3.0.3.778', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
+                sonarHome = tool name: 'sonar-scanner', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
             }
         }
 
